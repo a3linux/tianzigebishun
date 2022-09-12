@@ -80,7 +80,7 @@ li{display: inline-block; width:80px; height:80px; font-family:"楷体","楷体_
 li.f{color:#000;margin-left:-0px}
 li.svg{line-height:84px;}
 li svg{ magin:8px; vertical-align:middle;}
-li.svgh{display: inline-block; width:80px; height:80px; font-family:"楷体","楷体_gb2312", "Kaiti SC", STKaiti, "AR PL UKai CN", "AR PL UKai HK", "AR PL UKai TW", "AR PL UKai TW MBE", "AR PL KaitiM GB", KaiTi, KaiTi_GB2312, DFKai-SB, "TW\-Kai"; font-size:58px; text-align:center; line-height:85px;); margin:5px 0px 5px -2px; color:#b8b8b8; background:#b8b8b8; line-height:84px; magin:8px; vertical-align:middle;}
+li.svgh{display: inline-block; width:48px; height:48px; font-family:"楷体","楷体_gb2312", "Kaiti SC", STKaiti, "AR PL UKai CN", "AR PL UKai HK", "AR PL UKai TW", "AR PL UKai TW MBE", "AR PL KaitiM GB", KaiTi, KaiTi_GB2312, DFKai-SB, "TW\-Kai"; font-size:32px; text-align:center; line-height:48px;); margin:1px 0px 1px -1px; color:#b8b8b8; background:#b8b8b8; vertical-align:middle;padding: 2px;}
 .afterpage{ page-break-before:always;}
 .afterpage{ page-break-before:always;}
 .page-head{height: 116px;line-height: 136px; font-size: 32px;text-align: center;display: none;color: #666666}
@@ -113,7 +113,7 @@ for($ihz=0;$ihz<count($hz['0']);$ihz++){
 
     /* 显示提示行 */
     for($i=0;$i<$count;$i++) {
-        echo '<li class="svgh"><svg width="54" height="54" style="margin-top: -11px;"><g transform="translate(-2.9,48) scale(0.058, -0.0572)">';
+        echo '<li class="svgh"><svg width="32" height="32" style="margin-top: -2px;"><g transform="translate(-0.5, 25) scale(0.031, -0.032)">';
         for($ii=0;$ii<=$count;$ii++){
             if ($ii<=$i) {
 			    echo '<path d="'.$data['strokes'][$ii].'"style="fill:rgb('.$color.');stroke:rgb('.$color.');" stroke-width = "0"></path>';
@@ -142,28 +142,35 @@ for($ihz=0;$ihz<count($hz['0']);$ihz++){
 
 	echo "</g></svg></li>";
 
+    // Display character line
+    for($i=0;$i<8;$i++) {
+		 echo '<li class="svg"><svg width="54" height="54" style="margin-top: -11px;"><g transform="translate(-2.9,48) scale(0.058, -0.0572)">';
+	     foreach ($data['strokes'] as $v){
+		    echo '<path d="'.$v.'"style="fill:rgb('.$fcolor.');stroke:rgb('.$fcolor.');" stroke-width = "0"></path>';
+	     }
+		 echo "</g></svg></li>";
+    }
+    echo "<br>";
 
 	//按笔数显示
 	for($i=0;$i<$count;$i++){
 
-		echo '<li class="svg"><svg width="54" height="54" style="margin-top: -11px;"><g transform="translate(-2.9,48) scale(0.058, -0.0572)">';
+		//echo '<li class="svg"><svg width="54" height="54" style="margin-top: -11px;"><g transform="translate(-2.9,48) scale(0.058, -0.0572)">';
 		
 		//for($ii=0;$ii<=$i;$ii++){
-		for($ii=0;$ii<=$count;$ii++){
-			echo '<path d="'.$data['strokes'][$ii].'"style="fill:rgb('.$fcolor.');stroke:rgb('.$fcolor.');" stroke-width = "0"></path>';
+		for($ii=0;$ii<=$i;$ii++){
+		//	echo '<path d="'.$data['strokes'][$ii].'"style="fill:rgb('.$fcolor.');stroke:rgb('.$fcolor.');" stroke-width = "0"></path>';
 		}
 		
 
-		echo '</g></svg></li>';
-
+		//echo '</g></svg></li>';
 	}
-	
 	
 	/*判断是否填充12个田字格*/
 	$tzg12=($count+1)/12;
 	$kg=0;//空格，每行剩余未填充的空格
 	if(!is_int($tzg12)){
-		$kg=12- (12* $tzg12);
+		$kg=12 - (12* $tzg12);
 	}
 	//为负数
 	if($kg<0){
@@ -175,19 +182,19 @@ for($ihz=0;$ihz<count($hz['0']);$ihz++){
 	if($kg and $bs){
 		for($i=0;$i<$kg;$i++){
 			/*显示完整字符*/
-		 echo '<li class="svg"><svg width="54" height="54" style="margin-top: -11px;"><g transform="translate(-2.9,48) scale(0.058, -0.0572)">';
+		 //echo '<li class="svg"><svg width="54" height="54" style="margin-top: -11px;"><g transform="translate(-2.9,48) scale(0.058, -0.0572)">';
 	
 	     foreach ($data['strokes'] as $v){
-		    echo '<path d="'.$v.'"style="fill:rgb('.$fcolor.');stroke:rgb('.$fcolor.');" stroke-width = "0"></path>';
+		  //  echo '<path d="'.$v.'"style="fill:rgb('.$fcolor.');stroke:rgb('.$fcolor.');" stroke-width = "0"></path>';
 	     }
-		 echo "</g></svg></li>";
+		 //echo "</g></svg></li>";
 
-		}
+        }
 	}
 	//填充空行
 	if($kg and !$bs){
 		for($i=0;$i<$kg;$i++){
-			echo '<li class="svg">&nbsp;</li>';
+			//echo '<li class="svg">&nbsp;</li>';
 		}
 		
 	}
@@ -198,7 +205,7 @@ for($ihz=0;$ihz<count($hz['0']);$ihz++){
 	$arraytzg=intval(array_sum($tzg_hs));
 	$arraytzg=$arraytzg/15;
 	if(is_int($arraytzg)){
-		echo "</ul></div><div class='afterpage'><ul>";
+		//echo "</ul></div><div class='afterpage'><ul>";
 	}
 
 }
@@ -209,7 +216,7 @@ $tzgzys=ceil($tzg_hs/15);//田字格总页数
 $zhengye=($tzgzys*15-$tzg_hs)*12;
 
 	for($i=0;$i<$zhengye;$i++){
-		echo "<li>&nbsp;</li>";
+		//echo "<li>&nbsp;</li>";
 	}
 
 ?>
