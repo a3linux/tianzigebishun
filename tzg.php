@@ -72,7 +72,7 @@ if($f_color=='10'){
 <html>
 <head>
 <meta charset="utf-8">
-<title>田字格字帖生成器</title>
+<title>&nbsp;</title>
 <style>
 body,div,p,ul,li{ padding:0; margin:0; list-style:none;}
 div{ width:938px; margin:0 auto;padding-left:2px; }
@@ -80,7 +80,9 @@ li{display: inline-block; width:80px; height:80px; font-family:"楷体","楷体_
 li.f{color:#000;margin-left:-0px}
 li.svg{line-height:84px;}
 li svg{ magin:8px; vertical-align:middle;}
-li.svgh{display: inline-block; width:48px; height:48px; font-family:"楷体","楷体_gb2312", "Kaiti SC", STKaiti, "AR PL UKai CN", "AR PL UKai HK", "AR PL UKai TW", "AR PL UKai TW MBE", "AR PL KaitiM GB", KaiTi, KaiTi_GB2312, DFKai-SB, "TW\-Kai"; font-size:32px; text-align:center; line-height:48px;); margin:1px 0px 1px -1px; color:#b8b8b8; background:#b8b8b8; vertical-align:middle;padding: 2px;}
+li.svgbig{display: inline-block; width:120px; height:120px; font-family:"楷体","楷体_gb2312", "Kaiti SC", STKaiti, "AR PL UKai CN", "AR PL UKai HK", "AR PL UKai TW", "AR PL UKai TW MBE", "AR PL KaitiM GB", KaiTi, KaiTi_GB2312, DFKai-SB, "TW\-Kai"; font-size:92px; text-align:center; line-height:120px; background:url(img/<?=$bglx;?>b.svg); margin:5px 0px 5px -2px; color:#b8b8b8; vertical-align:middle;}
+li.svgh{display: inline-block; width:60px; height:60px; font-family:"楷体","楷体_gb2312", "Kaiti SC", STKaiti, "AR PL UKai CN", "AR PL UKai HK", "AR PL UKai TW", "AR PL UKai TW MBE", "AR PL KaitiM GB", KaiTi, KaiTi_GB2312, DFKai-SB, "TW\-Kai"; font-size:32px; text-align:center; line-height:60px;); margin:1px 4px; color:#b8b8b8; background:#b8b8b8; vertical-align:middle;}
+li.svgidx{display: inline-block; width:60px; height:18px; font-family:"楷体","楷体_gb2312", "Kaiti SC", STKaiti, "AR PL UKai CN", "AR PL UKai HK", "AR PL UKai TW", "AR PL UKai TW MBE", "AR PL KaitiM GB", KaiTi, KaiTi_GB2312, DFKai-SB, "TW\-Kai"; font-size:16px; text-align:center; line-height:24px;); margin:4px; color:#000; vertical-align:middle;background:none;}
 .afterpage{ page-break-before:always;}
 .afterpage{ page-break-before:always;}
 .page-head{height: 116px;line-height: 136px; font-size: 32px;text-align: center;display: none;color: #666666}
@@ -113,7 +115,7 @@ for($ihz=0;$ihz<count($hz['0']);$ihz++){
 
     /* 显示提示行 */
     for($i=0;$i<$count;$i++) {
-        echo '<li class="svgh"><svg width="32" height="32" style="margin-top: -2px;"><g transform="translate(-0.5, 25) scale(0.031, -0.032)">';
+        echo '<li class="svgh"><svg width="48" height="48" style="margin-top: -2px;"><g transform="translate(-0.8, 38) scale(0.048, -0.046)">';
         for($ii=0;$ii<=$count;$ii++){
             if ($ii<=$i) {
 			    echo '<path d="'.$data['strokes'][$ii].'"style="fill:rgb('.$color.');stroke:rgb('.$color.');" stroke-width = "0"></path>';
@@ -124,8 +126,14 @@ for($ihz=0;$ihz<count($hz['0']);$ihz++){
 		echo '</g></svg></li>';
     }
     echo '<br>';
+    for($i=0;$i<$count;$i++) {
+        $idx = $i + 1;
+        echo '<li class="svgidx">'.$idx.'</li>';
+    }
+    echo '<br>';
+
 	/*显示完整字符和拼音*/
-	if($py)
+	/*if($py)
 	{
 		//print_r($hz['0'][$ihz]);
 		$py_str=Pinyin::getPinyin($hz['0'][$ihz]);
@@ -141,16 +149,21 @@ for($ihz=0;$ihz<count($hz['0']);$ihz++){
 	}
 
 	echo "</g></svg></li>";
+    */
 
-    // Display character line
-    for($i=0;$i<8;$i++) {
-		 echo '<li class="svg"><svg width="54" height="54" style="margin-top: -11px;"><g transform="translate(-2.9,48) scale(0.058, -0.0572)">';
-	     foreach ($data['strokes'] as $v){
-		    echo '<path d="'.$v.'"style="fill:rgb('.$fcolor.');stroke:rgb('.$fcolor.');" stroke-width = "0"></path>';
-	     }
-		 echo "</g></svg></li>";
+    // 显示整体描红字体
+    for($i=0;$i<6;$i++) {
+        echo '<li class="svgbig"><svg width="98" height="98" style="margin-top: -24px;"><g transform="translate(-4.8, 94) scale(0.108, -0.110)">';
+        if ($i < 5) {
+            for($ii=0;$ii<$count;$ii++) {
+	    	    echo '<path d="'.$data['strokes'][$ii].'"style="fill:rgb('.$fcolor.');stroke:rgb('.$fcolor.');" stroke-width = "0"></path>';
+            }
+        } else {
+            echo '<li class="svgbig">&nbsp;</li>';
+        }
+		echo "</g></svg></li>";
     }
-    echo "<br>";
+    echo "<br><br><br><br>";
 
 	//按笔数显示
 	for($i=0;$i<$count;$i++){
