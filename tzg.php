@@ -80,9 +80,7 @@ li{display: inline-block; width:80px; height:80px; font-family:"楷体","楷体_
 li.f{color:#000;margin-left:-0px}
 li.svg{line-height:84px;}
 li svg{ magin:8px; vertical-align:middle;}
-li.svgh{display: inline-block; width:80px; height:80px; font-family:"楷体","楷体_gb2312", "Kaiti SC", STKaiti, "AR PL UKai CN", "AR PL UKai HK", "AR PL UKai TW", "AR PL UKai TW MBE", "AR PL KaitiM GB", KaiTi, KaiTi_GB2312, DFKai-SB, "TW\-Kai"; font-size:58px; text-align:center; line-height:85px;); margin:5px 0px 5px -2px; color:#b8b8b8; background:none;}
-li.svgh{line-height:84px;}
-li svgh{ magin:8px; vertical-align:middle;}
+li.svgh{display: inline-block; width:80px; height:80px; font-family:"楷体","楷体_gb2312", "Kaiti SC", STKaiti, "AR PL UKai CN", "AR PL UKai HK", "AR PL UKai TW", "AR PL UKai TW MBE", "AR PL KaitiM GB", KaiTi, KaiTi_GB2312, DFKai-SB, "TW\-Kai"; font-size:58px; text-align:center; line-height:85px;); margin:5px 0px 5px -2px; color:#b8b8b8; background:#b8b8b8; line-height:84px; magin:8px; vertical-align:middle;}
 .afterpage{ page-break-before:always;}
 .afterpage{ page-break-before:always;}
 .page-head{height: 116px;line-height: 136px; font-size: 32px;text-align: center;display: none;color: #666666}
@@ -120,7 +118,7 @@ for($ihz=0;$ihz<count($hz['0']);$ihz++){
             if ($ii<=$i) {
 			    echo '<path d="'.$data['strokes'][$ii].'"style="fill:rgb('.$color.');stroke:rgb('.$color.');" stroke-width = "0"></path>';
             } else {
-			    echo '<path d="'.$data['strokes'][$ii].'"style="fill:rgb('.$fcolor.');stroke:rgb('.$fcolor.');" stroke-width = "0"></path>';
+			    echo '<path d="'.$data['strokes'][$ii].'"style="fill:rgb('.$fz_color['10'].');stroke:rgb('.$fz_color['10'].');" stroke-width = "0"></path>';
             }
 		}
 		echo '</g></svg></li>';
