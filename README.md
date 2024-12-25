@@ -1,3 +1,15 @@
+# This is a changed version for personal usage.
+
+More reference for Chinese characters bishun
+
+* ![StrokeOrder](https://www.strokeorder.com/chinese/)
+* ![Table of general Chinese characters](https://github.com/jaywcjlove/table-of-general-standard-chinese-characters)
+* ![爱汉字](https://2hanzi.com/tianzige/index.html)
+* ![Original tool](https://lab.feifanju.com/zitie/)
+
+
+### 原README
+
 # tianzigebishun
 田字格笔顺生成
 田字格笔顺 字帖生成器
@@ -16,10 +28,6 @@ https://www.an2.net/zi/
 
 # 演示：
 https://lab.feifanju.com/zitie/
-
-
-
-
 
 
 # 感谢以下github，所用的笔顺数据出自下列库
